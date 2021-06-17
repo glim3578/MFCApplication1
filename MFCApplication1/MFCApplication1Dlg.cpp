@@ -14,7 +14,8 @@
 #define new DEBUG_NEW
 #endif
 
-
+#define COLOR_LABEL_BK RGB(100,0,0)
+#define COLOR_LABEL_TEXT RGB(255,255,255)
 // CAboutDlg dialog used for App About
 
 class CAboutDlg : public CDialogEx
@@ -61,6 +62,7 @@ CMFCApplication1Dlg::CMFCApplication1Dlg(CWnd* pParent /*=nullptr*/)
 void CMFCApplication1Dlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_BUTTON_NEW, m_btnNew);
 }
 
 BEGIN_MESSAGE_MAP(CMFCApplication1Dlg, CDialogEx)
@@ -103,6 +105,8 @@ BOOL CMFCApplication1Dlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
 	// TODO: Add extra initialization here
+
+	InitButtons(&m_btnNew);
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
@@ -156,6 +160,20 @@ HCURSOR CMFCApplication1Dlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+void CMFCApplication1Dlg::InitButtons(CButtonST* pButton) {
+
+	CFont Font;
+	Font.CreatePointFont(30, _T("Consolas"));
+
+	pButton->SetFont(&Font);
+	pButton->SetColor(CButtonST::BTNST_COLOR_BK_IN, COLOR_LABEL_BK);
+	pButton->SetColor(CButtonST::BTNST_COLOR_BK_OUT, COLOR_LABEL_BK);
+	pButton->SetColor(CButtonST::BTNST_COLOR_BK_FOCUS, COLOR_LABEL_BK);
+	pButton->SetColor(CButtonST::BTNST_COLOR_FG_IN, COLOR_LABEL_TEXT);
+	pButton->SetColor(CButtonST::BTNST_COLOR_FG_OUT, COLOR_LABEL_TEXT);
+	pButton->SetColor(CButtonST::BTNST_COLOR_FG_FOCUS, COLOR_LABEL_TEXT);
+
+}
 
 
 void CMFCApplication1Dlg::OnBnClickedButtonNew()

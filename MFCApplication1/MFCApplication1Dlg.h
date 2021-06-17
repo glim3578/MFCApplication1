@@ -3,7 +3,7 @@
 //
 
 #pragma once
-
+#include "BtnST.h"
 
 // CMFCApplication1Dlg dialog
 class CMFCApplication1Dlg : public CDialogEx
@@ -33,4 +33,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	afx_msg void OnBnClickedButtonNew();
+
+	CButtonST m_btnNew;
+	void InitButtons(CButtonST* pButton);
 };
