@@ -5,6 +5,7 @@
 #pragma once
 #include "BtnST.h"
 #include "Label.h"
+#include "ini.h"
 
 // CMFCApplication1Dlg dialog
 class CMFCApplication1Dlg : public CDialogEx
@@ -40,4 +41,7 @@ public:
 	double m_dNum;
 	CLabel m_lblNum;
 	void InitLabels(CLabel* pLabel);
+
+	void UpdateIni(BOOL bLoad);
+	afx_msg void OnBnClickedOk();
 };

@@ -13,6 +13,7 @@
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
+#include <fstream>
 
 #define COLOR_LABEL_BK RGB(100,0,0)
 #define COLOR_LABEL_TEXT RGB(255,255,255)
@@ -73,6 +74,7 @@ BEGIN_MESSAGE_MAP(CMFCApplication1Dlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_BUTTON_NEW, &CMFCApplication1Dlg::OnBnClickedButtonNew)
+	ON_BN_CLICKED(IDOK, &CMFCApplication1Dlg::OnBnClickedOk)
 END_MESSAGE_MAP()
 
 
@@ -111,6 +113,8 @@ BOOL CMFCApplication1Dlg::OnInitDialog()
 
 	InitButtons(&m_btnNew);
 	InitLabels(&m_lblNum);
+
+	UpdateIni(true);
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
@@ -188,6 +192,23 @@ void CMFCApplication1Dlg::InitLabels(CLabel* pLabel) {
 
 }
 
+void CMFCApplication1Dlg::UpdateIni(BOOL bLoad) {
+
+	CString fileName = CString("C://Users//GLIM//source//repos//glim3578//MFCApplication1//MFCApplication1//Glim.ini");
+	std::ifstream file(fileName);
+
+	if (!file.good()) bLoad = false;
+
+	CString str(fileName);
+	CString strSection(_T("Parameters"));
+
+	CIni ini(str, strSection);
+
+	ini.SerGet(bLoad, m_dNum, _T("NUM"));
+
+	UpdateData(false);
+}
+
 void CMFCApplication1Dlg::OnBnClickedButtonNew()
 {
 	// TODO: Add your control notification handler code here
@@ -196,4 +217,15 @@ void CMFCApplication1Dlg::OnBnClickedButtonNew()
 	UpdateData(true);
 	m_lblNum.SetText(m_dNum);
 
+}
+
+
+void CMFCApplication1Dlg::OnBnClickedOk()
+{
+	// TODO: Add your control notification handler code here
+
+	UpdateData(true);
+	UpdateIni(false);
+
+	CDialogEx::OnOK();
 }
