@@ -4,6 +4,7 @@
 
 #pragma once
 #include "BtnST.h"
+#include "Label.h"
 
 // CMFCApplication1Dlg dialog
 class CMFCApplication1Dlg : public CDialogEx
@@ -36,4 +37,7 @@ public:
 
 	CButtonST m_btnNew;
 	void InitButtons(CButtonST* pButton);
+	double m_dNum;
+	CLabel m_lblNum;
+	void InitLabels(CLabel* pLabel);
 };

@@ -55,6 +55,7 @@ END_MESSAGE_MAP()
 
 CMFCApplication1Dlg::CMFCApplication1Dlg(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_MFCAPPLICATION1_DIALOG, pParent)
+	, m_dNum(0)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -63,6 +64,8 @@ void CMFCApplication1Dlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_BUTTON_NEW, m_btnNew);
+	DDX_Text(pDX, IDC_EDIT1, m_dNum);
+	DDX_Control(pDX, IDC_STATIC1, m_lblNum);
 }
 
 BEGIN_MESSAGE_MAP(CMFCApplication1Dlg, CDialogEx)
@@ -107,6 +110,7 @@ BOOL CMFCApplication1Dlg::OnInitDialog()
 	// TODO: Add extra initialization here
 
 	InitButtons(&m_btnNew);
+	InitLabels(&m_lblNum);
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
@@ -174,12 +178,22 @@ void CMFCApplication1Dlg::InitButtons(CButtonST* pButton) {
 	pButton->SetColor(CButtonST::BTNST_COLOR_FG_FOCUS, COLOR_LABEL_TEXT);
 
 }
+void CMFCApplication1Dlg::InitLabels(CLabel* pLabel) {
 
+	pLabel->SetFontName(_T("Consolas"));
+	pLabel->SetFontSize(20);
+
+	pLabel->SetBkColor(COLOR_LABEL_BK);
+	pLabel->SetTextColor(COLOR_LABEL_TEXT);
+
+}
 
 void CMFCApplication1Dlg::OnBnClickedButtonNew()
 {
 	// TODO: Add your control notification handler code here
 
-	CDlgNew Dlg;
-	Dlg.DoModal();
+	
+	UpdateData(true);
+	m_lblNum.SetText(m_dNum);
+
 }
