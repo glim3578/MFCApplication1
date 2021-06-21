@@ -6,6 +6,8 @@
 #include "BtnST.h"
 #include "Label.h"
 #include "ini.h"
+#include "CDlgImage.h"
+#include "CDlgParameter.h"
 
 // CMFCApplication1Dlg dialog
 class CMFCApplication1Dlg : public CDialogEx
@@ -44,4 +46,14 @@ public:
 
 	void UpdateIni(BOOL bLoad);
 	afx_msg void OnBnClickedOk();
+
+	CDlgImage* m_pDlgImage;
+	CDlgParameter* m_pDlgParameter;
+
+	void InitDialog();
+	void setDlgView(int nMode);
+
+	afx_msg void OnDestroy();
+	afx_msg void OnBnClickedButtonImage();
+	afx_msg void OnBnClickedButtonParameter();
 };

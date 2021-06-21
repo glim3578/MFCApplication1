@@ -10,4 +10,7 @@
 // add headers that you want to pre-compile here
 #include "framework.h"
 
+#define DLG_VIEW_IMAGE 0x01
+#define DLG_VIEW_PARAMETER 0x02
+
 #endif //PCH_H

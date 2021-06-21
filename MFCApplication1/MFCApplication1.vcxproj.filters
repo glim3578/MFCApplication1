@@ -48,6 +48,12 @@
     <ClInclude Include="StringConversion.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CDlgImage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CDlgParameter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MFCApplication1.cpp">
@@ -72,6 +78,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="StringConversion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CDlgImage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CDlgParameter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

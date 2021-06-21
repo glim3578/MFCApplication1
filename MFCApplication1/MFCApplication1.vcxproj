@@ -184,7 +184,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BtnST.h" />
+    <ClInclude Include="CDlgImage.h" />
     <ClInclude Include="CDlgNew.h" />
+    <ClInclude Include="CDlgParameter.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="ini.h" />
     <ClInclude Include="Label.h" />
@@ -197,7 +199,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BtnST.cpp" />
+    <ClCompile Include="CDlgImage.cpp" />
     <ClCompile Include="CDlgNew.cpp" />
+    <ClCompile Include="CDlgParameter.cpp" />
     <ClCompile Include="ini.cpp" />
     <ClCompile Include="Label.cpp" />
     <ClCompile Include="MFCApplication1.cpp" />

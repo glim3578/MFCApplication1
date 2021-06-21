@@ -75,6 +75,9 @@ BEGIN_MESSAGE_MAP(CMFCApplication1Dlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_BUTTON_NEW, &CMFCApplication1Dlg::OnBnClickedButtonNew)
 	ON_BN_CLICKED(IDOK, &CMFCApplication1Dlg::OnBnClickedOk)
+	ON_WM_DESTROY()
+	ON_BN_CLICKED(IDC_BUTTON_IMAGE, &CMFCApplication1Dlg::OnBnClickedButtonImage)
+	ON_BN_CLICKED(IDC_BUTTON_PARAMETER, &CMFCApplication1Dlg::OnBnClickedButtonParameter)
 END_MESSAGE_MAP()
 
 
@@ -113,6 +116,7 @@ BOOL CMFCApplication1Dlg::OnInitDialog()
 
 	InitButtons(&m_btnNew);
 	InitLabels(&m_lblNum);
+	InitDialog();
 
 	UpdateIni(true);
 
@@ -166,6 +170,33 @@ void CMFCApplication1Dlg::OnPaint()
 HCURSOR CMFCApplication1Dlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
+}
+
+void CMFCApplication1Dlg::InitDialog() {
+
+	m_pDlgImage = new CDlgImage();
+	m_pDlgImage->Create(IDD_CDlgImage);
+	m_pDlgImage->MoveWindow(20, 100, 600, 350);
+	
+	m_pDlgParameter = new CDlgParameter();
+	m_pDlgParameter->Create(IDD_CDlgParameter);
+	m_pDlgParameter->MoveWindow(20, 100, 600, 350);
+
+	setDlgView(DLG_VIEW_IMAGE);
+}
+
+void CMFCApplication1Dlg::setDlgView(int nMode) {
+
+	if (nMode & DLG_VIEW_IMAGE)
+		m_pDlgImage->ShowWindow(SW_SHOW);
+	else
+		m_pDlgImage->ShowWindow(SW_HIDE);
+
+	if (nMode & DLG_VIEW_PARAMETER)
+		m_pDlgParameter->ShowWindow(SW_SHOW);
+	else
+		m_pDlgParameter->ShowWindow(SW_HIDE);
+	
 }
 
 void CMFCApplication1Dlg::InitButtons(CButtonST* pButton) {
@@ -228,4 +259,32 @@ void CMFCApplication1Dlg::OnBnClickedOk()
 	UpdateIni(false);
 
 	CDialogEx::OnOK();
+}
+
+
+void CMFCApplication1Dlg::OnDestroy()
+{
+	CDialogEx::OnDestroy();
+
+	// TODO: Add your message handler code here
+	delete m_pDlgImage;
+	delete m_pDlgParameter;
+
+}
+
+
+void CMFCApplication1Dlg::OnBnClickedButtonImage()
+{
+	// TODO: Add your control notification handler code here
+
+	setDlgView(DLG_VIEW_IMAGE);
+
+}
+
+
+void CMFCApplication1Dlg::OnBnClickedButtonParameter()
+{
+	// TODO: Add your control notification handler code here
+
+	setDlgView(DLG_VIEW_PARAMETER);
 }
