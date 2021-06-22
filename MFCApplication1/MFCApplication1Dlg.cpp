@@ -78,6 +78,8 @@ BEGIN_MESSAGE_MAP(CMFCApplication1Dlg, CDialogEx)
 	ON_WM_DESTROY()
 	ON_BN_CLICKED(IDC_BUTTON_IMAGE, &CMFCApplication1Dlg::OnBnClickedButtonImage)
 	ON_BN_CLICKED(IDC_BUTTON_PARAMETER, &CMFCApplication1Dlg::OnBnClickedButtonParameter)
+	ON_BN_CLICKED(IDC_BUTTON_SAVE, &CMFCApplication1Dlg::OnBnClickedButtonSave)
+	ON_BN_CLICKED(IDC_BUTTON_LOAD, &CMFCApplication1Dlg::OnBnClickedButtonLoad)
 END_MESSAGE_MAP()
 
 
@@ -287,4 +289,39 @@ void CMFCApplication1Dlg::OnBnClickedButtonParameter()
 	// TODO: Add your control notification handler code here
 
 	setDlgView(DLG_VIEW_PARAMETER);
+}
+
+
+void CMFCApplication1Dlg::OnBnClickedButtonSave()
+{
+	// TODO: Add your control notification handler code here
+	char strFilter[] = "BMP ONLY (*.BMP) | *.BMP;*.bmp | All Files(*.*)|*.*||";
+	CFileDialog FileDlg(TRUE, CString(".BMP"), NULL, 0, CString(strFilter));
+
+	if (FileDlg.DoModal() == IDOK) {
+		m_pDlgImage->m_imgFile.Save(FileDlg.GetPathName());
+	}
+}
+
+
+void CMFCApplication1Dlg::OnBnClickedButtonLoad()
+{
+	// TODO: Add your control notification handler code here
+
+	char strFilter[] = "BMP ONLY (*.BMP) | *.BMP;*.bmp | All Files(*.*)|*.*||";
+	CFileDialog FileDlg(TRUE, CString(".BMP"), NULL, 0, CString(strFilter));
+
+	if (FileDlg.DoModal() == IDOK) {
+
+		HRESULT hr = m_pDlgImage->m_imgFile.Load(FileDlg.GetPathName());
+
+		if (SUCCEEDED(hr)) {
+
+			//이미지 출력
+			m_pDlgParameter->ShowWindow(SW_HIDE);
+			m_pDlgImage->ShowWindow(SW_HIDE);
+			m_pDlgImage->ShowWindow(SW_SHOW); // for repaint 
+
+		}
+	}
 }
