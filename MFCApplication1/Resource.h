@@ -18,9 +18,11 @@
 #define IDC_BUTTON_IMAGE                1014
 #define IDC_BUTTON_PARAMETER            1015
 #define IDC_BUTTON_SAVE                 1018
-#define IDC_BUTTON5                     1019
 #define IDC_BUTTON_LOAD                 1019
 #define IDC_STATIC_IMAGE                1020
+#define IDC_BUTTON_BINARY               1023
+#define IDC_BUTTON9                     1024
+#define IDC_BUTTON_CENTROID             1024
 
 // Next default values for new objects
 // 
@@ -28,7 +30,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        134
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1021
+#define _APS_NEXT_CONTROL_VALUE         1025
 #define _APS_NEXT_SYMED_VALUE           105
 #endif
 #endif

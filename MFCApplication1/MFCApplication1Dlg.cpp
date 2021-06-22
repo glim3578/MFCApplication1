@@ -80,6 +80,8 @@ BEGIN_MESSAGE_MAP(CMFCApplication1Dlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON_PARAMETER, &CMFCApplication1Dlg::OnBnClickedButtonParameter)
 	ON_BN_CLICKED(IDC_BUTTON_SAVE, &CMFCApplication1Dlg::OnBnClickedButtonSave)
 	ON_BN_CLICKED(IDC_BUTTON_LOAD, &CMFCApplication1Dlg::OnBnClickedButtonLoad)
+	ON_BN_CLICKED(IDC_BUTTON_BINARY, &CMFCApplication1Dlg::OnBnClickedButtonBinary)
+	ON_BN_CLICKED(IDC_BUTTON_CENTROID, &CMFCApplication1Dlg::OnBnClickedButtonCentroid)
 END_MESSAGE_MAP()
 
 
@@ -312,6 +314,7 @@ void CMFCApplication1Dlg::OnBnClickedButtonLoad()
 	CFileDialog FileDlg(TRUE, CString(".BMP"), NULL, 0, CString(strFilter));
 
 	if (FileDlg.DoModal() == IDOK) {
+		m_pDlgImage->m_imgFile.Destroy();
 
 		HRESULT hr = m_pDlgImage->m_imgFile.Load(FileDlg.GetPathName());
 
@@ -324,4 +327,28 @@ void CMFCApplication1Dlg::OnBnClickedButtonLoad()
 
 		}
 	}
+}
+
+
+void CMFCApplication1Dlg::OnBnClickedButtonBinary()
+{
+	// TODO: Add your control notification handler code here
+
+	m_pDlgImage->binarization();
+
+	m_pDlgParameter->ShowWindow(SW_HIDE);
+	m_pDlgImage->ShowWindow(SW_HIDE);
+	m_pDlgImage->ShowWindow(SW_SHOW); // for repaint 
+}
+
+
+void CMFCApplication1Dlg::OnBnClickedButtonCentroid()
+{
+	// TODO: Add your control notification handler code here
+
+	m_pDlgImage->centroid();
+
+	m_pDlgParameter->ShowWindow(SW_HIDE);
+	m_pDlgImage->ShowWindow(SW_HIDE);
+	m_pDlgImage->ShowWindow(SW_SHOW); // for repaint 
 }

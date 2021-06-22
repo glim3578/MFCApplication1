@@ -58,4 +58,6 @@ public:
 	afx_msg void OnBnClickedButtonParameter();
 	afx_msg void OnBnClickedButtonSave();
 	afx_msg void OnBnClickedButtonLoad();
+	afx_msg void OnBnClickedButtonBinary();
+	afx_msg void OnBnClickedButtonCentroid();
 };
