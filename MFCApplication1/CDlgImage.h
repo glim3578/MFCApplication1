@@ -28,6 +28,6 @@ public:
 	afx_msg void OnPaint();
 
 	void drawImage();
-	void binarization();
+	void binarization(int threshold);
 	void centroid();
 };

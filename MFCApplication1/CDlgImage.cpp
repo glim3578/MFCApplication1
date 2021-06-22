@@ -62,7 +62,7 @@ void CDlgImage::drawImage() {
 	}
 }
 
-void CDlgImage::binarization() {
+void CDlgImage::binarization(int threshold) {
 
 	if (m_imgFile != NULL) {
 
@@ -74,7 +74,7 @@ void CDlgImage::binarization() {
 		for (int j = 0; j < h; j++) {
 			for (int i = 0; i < w; i++) {
 				unsigned char* fmTmp = fm + j * w + i;
-				if (*fmTmp < 128) *fmTmp = 0;
+				if (*fmTmp < threshold) *fmTmp = 0;
 				else *fmTmp = 0xff;
 			}
 		}

@@ -59,6 +59,7 @@ CMFCApplication1Dlg::CMFCApplication1Dlg(CWnd* pParent /*=nullptr*/)
 	, m_dNum(0)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
+
 }
 
 void CMFCApplication1Dlg::DoDataExchange(CDataExchange* pDX)
@@ -178,12 +179,12 @@ HCURSOR CMFCApplication1Dlg::OnQueryDragIcon()
 
 void CMFCApplication1Dlg::InitDialog() {
 
-	m_pDlgImage = new CDlgImage();
-	m_pDlgImage->Create(IDD_CDlgImage);
+	m_pDlgImage = new CDlgImage(this);
+	m_pDlgImage->Create(IDD_CDlgImage,this);
 	m_pDlgImage->MoveWindow(20, 100, 600, 350);
 	
-	m_pDlgParameter = new CDlgParameter();
-	m_pDlgParameter->Create(IDD_CDlgParameter);
+	m_pDlgParameter = new CDlgParameter(this);
+	m_pDlgParameter->Create(IDD_CDlgParameter,this);
 	m_pDlgParameter->MoveWindow(20, 100, 600, 350);
 
 	setDlgView(DLG_VIEW_IMAGE);
@@ -334,7 +335,7 @@ void CMFCApplication1Dlg::OnBnClickedButtonBinary()
 {
 	// TODO: Add your control notification handler code here
 
-	m_pDlgImage->binarization();
+	m_pDlgImage->binarization(nThreshold);
 
 	m_pDlgParameter->ShowWindow(SW_HIDE);
 	m_pDlgImage->ShowWindow(SW_HIDE);
